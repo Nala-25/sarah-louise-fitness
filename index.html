@@ -3,212 +3,425 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sarah Louise Fitness - Feedback & 1-on-1 Coaching</title>
+  <title>Sarah Louise Fitness - Custom 7-Day Plan & Quiz</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Poppins', sans-serif; background-color: #caaeb1; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background-color: #caaeb1;
+    }
+    .quiz-option {
+      transition: all 0.2s ease-in-out;
+    }
+    .quiz-option:hover { 
+      border-color: #272626; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
   </style>
 </head>
-<body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased bg-[#caaeb1]">
+<body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased selection:bg-[#d2858c] selection:text-white bg-[#caaeb1]">
 
-  <!-- Header -->
-  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd]">
-    <img src="https://lh3.googleusercontent.com/d/15VIHy6EnrPGrt61dwak1kspj_KOhkhwg" 
-         alt="Sarah Louise Fitness Logo" 
-         class="h-20 w-auto object-contain mx-auto" />
+  <!-- Header with Brand Logo -->
+  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] relative z-10">
+    <div class="flex flex-col items-center justify-center max-w-xl mx-auto">
+      <img 
+        src="https://lh3.googleusercontent.com/d/15VIHy6EnrPGrt61dwak1kspj_KOhkhwg" 
+        alt="Sarah Louise Fitness Logo" 
+        class="h-20 md:h-28 w-auto object-contain mx-auto hover:opacity-95 transition"
+      />
+    </div>
   </header>
 
-  <!-- Main Wrapper -->
-  <main class="max-w-4xl mx-auto px-4 py-8 w-full space-y-12">
+  <!-- MAIN CONTENT WRAPPER -->
+  <main class="bg-[#caaeb1] flex-1 flex flex-col justify-center py-8">
 
-    <!-- SECTION 1: QUICK FEEDBACK FORM -->
-    <section class="bg-white/95 p-6 sm:p-8 rounded-3xl shadow-xl border border-[#8f7478]/20">
-      <div class="text-center max-w-xl mx-auto mb-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-[#8f7478] bg-[#d2858c]/20 px-3 py-1 rounded-full">Your Thoughts Matter</span>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-[#272626] mt-2">How Was Your 7-Day Guide? 💬</h1>
-        <p class="text-xs sm:text-sm text-[#272626]/80 mt-1">Help us make our guides even better! Takes less than 60 seconds.</p>
-      </div>
-
-      <form id="feedbackForm" onsubmit="submitFeedback(event)" class="space-y-4 max-w-lg mx-auto">
-        <div>
-          <label class="block text-xs font-bold text-[#272626] mb-1">Your Name</label>
-          <input type="text" id="fb-name" placeholder="First Name" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#272626]">
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-[#272626] mb-1">Email Address</label>
-          <input type="email" id="fb-email" placeholder="Email Address" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#272626]">
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-[#272626] mb-1">How would you rate the 7-Day Guide?</label>
-          <select id="fb-rating" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#272626]">
-            <option value="5">⭐⭐⭐⭐⭐ (5/5 - Loved it!)</option>
-            <option value="4">⭐⭐⭐⭐ (4/5 - Really good)</option>
-            <option value="3">⭐⭐⭐ (3/5 - It was okay)</option>
-            <option value="2">⭐⭐ (2/5 - Needs work)</option>
-            <option value="1">⭐ (1/5 - Didn't like it)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-[#272626] mb-1">Any feedback or questions for Sarah?</label>
-          <textarea id="fb-message" rows="3" placeholder="Tell us what you liked or where you got stuck..." class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#272626]"></textarea>
-        </div>
-        <button type="submit" id="fb-btn" class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-3.5 rounded-xl text-sm uppercase tracking-wider transition">
-          Submit Feedback
-        </button>
-        <p id="fb-status" class="text-xs text-center font-bold text-emerald-700 hidden">Thanks for your feedback! ❤️</p>
-      </form>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="relative flex py-2 items-center">
-      <div class="flex-grow border-t border-[#8f7478]/30"></div>
-      <span class="flex-shrink mx-4 text-xs font-bold text-[#272626]/70 uppercase tracking-widest">Ready For The Next Step?</span>
-      <div class="flex-grow border-t border-[#8f7478]/30"></div>
-    </div>
-
-    <!-- SECTION 2: 1-ON-1 COACHING OFFER -->
-    <section class="bg-[#d2858c] p-6 sm:p-10 rounded-3xl shadow-2xl border border-[#8f7478]/30 text-[#272626]">
-      <div class="text-center max-w-xl mx-auto mb-8">
-        <span class="text-xs font-bold uppercase tracking-wider bg-[#272626] text-white px-4 py-1.5 rounded-full shadow-sm">VIP Transformation Program</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3">Take It To The Next Level With 1-on-1 Coaching 🔥</h2>
-        <p class="text-sm font-medium mt-2 text-[#272626]/90">Stop guessing. Get a fully custom routine, weekly direct check-ins with Sarah, and built-in accountability to reach your goals faster.</p>
-      </div>
-
-      <!-- Features Checklist -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8 bg-white/60 p-6 rounded-2xl border border-white/40">
-        <div class="flex items-start gap-3">
-          <span class="text-lg">🎯</span>
-          <span class="text-xs sm:text-sm font-medium"><strong>100% Customized Workouts:</strong> Designed specifically around your equipment, body, and daily schedule.</span>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="text-lg">🥗</span>
-          <span class="text-xs sm:text-sm font-medium"><strong>Simple Nutrition Plan:</strong> Macro targets & easy recipes to fuel fat loss without restrictive diets.</span>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="text-lg">📲</span>
-          <span class="text-xs sm:text-sm font-medium"><strong>Direct 1-on-1 WhatsApp Access:</strong> Daily text support whenever you have questions or need motivation.</span>
-        </div>
-        <div class="flex items-start gap-3">
-          <span class="text-lg">📊</span>
-          <span class="text-xs sm:text-sm font-medium"><strong>Weekly Progress Reviews:</strong> Form checks & plan adjustments to keep you consistently moving forward.</span>
-        </div>
-      </div>
-
-      <!-- Pricing / GCash Checkout Card -->
-      <div class="max-w-md mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-100">
-        <div class="text-center">
-          <h3 class="text-lg font-bold text-[#272626]">1-on-1 VIP Coaching Pass</h3>
-          <p class="text-3xl font-extrabold text-[#272626] mt-2">₱2,499 <span class="text-xs text-gray-500 font-normal">/ month</span></p>
-          <p class="text-xs text-gray-500 mt-1">Cancel or pause anytime.</p>
-        </div>
-
-        <!-- Step 1: Scan GCash QR -->
-        <div class="my-6 border-t border-gray-200 pt-6 space-y-3">
-          <p class="text-xs font-bold uppercase tracking-wider text-[#8f7478] text-center">Step 1: Scan & Pay via GCash</p>
+    <!-- STEP 1: LANDING PAGE LEAD FORM -->
+    <div id="lead-view" class="max-w-6xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Left Column: Copy & Form -->
+        <div class="text-center lg:text-left">
           
-          <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100 text-center">
-            <!-- Replace the src link below with your hosted GCash QR Code image link -->
-            <img src="https://lh3.googleusercontent.com/d/YOUR_GCASH_QR_IMAGE_ID" 
-                 alt="GCash QR Code" 
-                 class="w-52 h-auto mx-auto rounded-xl shadow-md border-2 border-white mb-3" />
-            <p class="text-xs font-bold text-blue-900">Account Name: <span class="text-blue-700">Allanie Padilla</span></p>
+          <!-- Quiz Eyebrow Tag -->
+          <div class="inline-flex items-center gap-1.5 bg-[#d2858c]/20 text-[#272626] text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-5 border border-[#d2858c]/30 shadow-sm">
+            <span>⚡</span> 2-Minute Personalization Quiz
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 leading-tight text-[#272626]">
+            Transform Your Body With a <span class="text-[#8f7478] relative inline-block underline decoration-[#d2858c]/40 underline-offset-4">100% Tailored</span> Plan
+          </h1>
+          
+          <!-- Subheadline -->
+          <p class="text-[#272626]/80 text-base md:text-lg mb-6 leading-relaxed font-medium">
+            Take our quick 2-minute quiz to unlock your zero-equipment workout routine and meal prep guide built specifically for your body and goals.
+          </p>
+
+          <!-- Quiz Highlights Bullet List -->
+          <ul class="text-left space-y-3 mb-8 text-sm font-medium text-[#272626]/90 max-w-md mx-auto lg:mx-0 bg-white/60 p-4 rounded-xl border border-gray-200/60 shadow-sm">
+            <li class="flex items-center space-x-3">
+              <span class="text-base bg-white p-1 rounded-md shadow-xs">⏱️</span>
+              <span><strong>Fast:</strong> Takes only 2 minutes (7 simple questions)</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-base bg-white p-1 rounded-md shadow-xs">🎯</span>
+              <span><strong>Targeted:</strong> Adapted to your fitness level & goals</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-base bg-white p-1 rounded-md shadow-xs">🥗</span>
+              <span><strong>Complete:</strong> Custom workouts + quick meal prep ideas</span>
+            </li>
+          </ul>
+
+          <!-- Form Container -->
+          <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4 bg-[#d2858c] p-6 sm:p-8 rounded-2xl border border-[#8f7478]/30 shadow-2xl">
+            <div>
+              <input type="text" id="name" placeholder="First Name" required 
+                class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
+            </div>
+            <div>
+              <input type="email" id="email" placeholder="Email Address" required 
+                class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
+            </div>
+            <button type="submit" id="submitBtn" 
+              class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-4 rounded-xl transition duration-200 transform active:scale-[0.98] shadow-lg shadow-[#272626]/20 uppercase tracking-wide text-sm sm:text-base">
+              TAKE THE 2-MIN QUIZ & GET MY PLAN →
+            </button>
+          </form>
+          
+          <p class="text-xs text-[#272626]/70 mt-4 font-medium flex items-center justify-center lg:justify-start gap-1">
+            <span>🔒</span> 100% free. Takes 2 minutes. No credit card required.
+          </p>
+        </div>
+
+        <!-- Right Column: Hero Image Container with Floating Badges & Glow -->
+        <div class="flex justify-center items-center py-4 sm:py-6">
+          <!-- Outer Wrapper with padding so floating negative badges stay visible -->
+          <div class="relative w-full max-w-md lg:max-w-full m-2 sm:m-4">
+            
+            <!-- Floating Rating Badge (Top Left) -->
+            <div class="absolute -top-4 -left-2 sm:-left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-[#8f7478]/30 flex items-center gap-1.5 z-20 whitespace-nowrap">
+              <span class="text-xs">⭐⭐⭐⭐⭐</span>
+              <span class="text-[11px] font-bold text-[#272626]">4.9/5 (1,200+ Results)</span>
+            </div>
+
+            <!-- Main Card Container -->
+            <div class="relative bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30 overflow-hidden">
+              <!-- Background Accent Glow inside the Card -->
+              <div class="absolute inset-0 bg-gradient-to-tr from-[#d2858c]/20 via-transparent to-[#8f7478]/15 rounded-3xl pointer-events-none"></div>
+
+              <!-- Main Model Image -->
+              <img 
+                src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
+                alt="Sarah Louise Fitness Program Preview" 
+                class="relative w-full h-auto object-cover rounded-2xl z-0" 
+              />
+            </div>
+
+            <!-- Floating Benefit Badge (Bottom Right) -->
+            <div class="absolute -bottom-4 -right-2 sm:-right-4 bg-[#272626] text-white px-4 py-2 rounded-2xl shadow-2xl flex items-center gap-2 text-xs font-bold z-20 border border-white/20 whitespace-nowrap">
+              <span>💪</span> <span>100% Home Workouts</span>
+            </div>
+
           </div>
         </div>
 
-        <!-- Step 2: Payment Verification Form -->
-        <div class="border-t border-gray-200 pt-6">
-          <p class="text-xs font-bold uppercase tracking-wider text-[#8f7478] text-center mb-4">Step 2: Submit Payment Details</p>
-          
-          <form id="gcashForm" onsubmit="submitGcashPayment(event)" class="space-y-3">
-            <div>
-              <input type="text" id="gc-name" placeholder="Your Full Name" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#272626]">
-            </div>
-            <div>
-              <input type="email" id="gc-email" placeholder="Email Address" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#272626]">
-            </div>
-            <div>
-              <input type="text" id="gc-ref" placeholder="GCash Reference No. (e.g. 1002 3456 7890)" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#272626]">
-            </div>
-            <button type="submit" id="gc-btn" class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-md">
-              CONFIRM PAYMENT & START &rarr;
-            </button>
-            <p id="gc-status" class="text-xs text-center font-bold text-emerald-700 hidden">Payment details submitted! Sarah will reach out within 24 hours to set up your account. 🎉</p>
-          </form>
+      </div>
+    </div>
+
+    <!-- STEP 2: QUIZ VIEW (Hidden initially) -->
+    <div id="quiz-view" class="hidden max-w-xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
+      <!-- Confirmation Banner -->
+      <div class="bg-[#272626] border border-[#272626] p-4 rounded-xl mb-6 text-center text-sm text-[#fefdfd] shadow-lg flex items-center justify-center gap-2">
+        <span>🎉</span> <strong>Success! Your 7-Day Guide is on its way to your inbox.</strong>
+      </div>
+
+      <!-- Quiz Container -->
+      <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl">
+        <!-- Quiz Header -->
+        <div class="text-center mb-6">
+          <span class="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">Step 2 of 2</span>
+          <h2 class="text-2xl font-extrabold mt-2 text-[#272626]">2-Minute Personalization Quiz</h2>
+          <p class="text-[#272626]/80 text-xs mt-1 font-medium">Answer a few quick questions to match with your tailored plan.</p>
+          <div class="w-full bg-white/30 h-2.5 rounded-full mt-4 border border-[#8f7478]/20 overflow-hidden">
+            <div id="progress-bar" class="bg-[#272626] h-full rounded-full transition-all duration-300" style="width: 14%;"></div>
+          </div>
         </div>
 
+        <!-- Container for Questions -->
+        <div id="quiz-container" class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-xs">
+          <h3 id="question-title" class="text-base sm:text-lg font-bold text-[#272626] mb-4"></h3>
+          <div id="options-container" class="space-y-3"></div>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <!-- STEP 3: THANK YOU & QUIZ RESULT PAGE (Hidden initially) -->
+    <div id="result-view" class="hidden max-w-xl mx-auto px-6 py-8 text-center my-auto w-full transition-all duration-500">
+      <!-- Result Container -->
+      <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl text-left">
+        
+        <!-- Thank You Confirmation Header -->
+        <div class="text-center mb-6">
+          <span class="bg-[#272626] text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm">Signup Confirmed</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-[#272626] mt-3">🎉 Thank You for Joining!</h1>
+          <p class="text-white font-bold text-sm mt-1">Your signup was successful!</p>
+        </div>
+
+        <!-- What to Expect Next Section -->
+        <div class="bg-white/95 p-5 rounded-xl border border-white/50 text-xs text-[#272626] space-y-2 mb-6 shadow-sm">
+          <p class="font-bold text-[#272626] text-sm mb-2">What To Expect Next:</p>
+          <p class="flex items-start gap-2"><span>1.</span> <span><strong>Check your email inbox</strong> for an email from <em>Sarah Louise Fitness</em> containing your <strong>Customized 7-Day Guide</strong>.</span></p>
+          <p class="flex items-start gap-2"><span>2.</span> <span><strong>Check Spam/Promotions:</strong> If you don't see it within 5 minutes, please check your spam or promotions tab.</span></p>
+          <p class="flex items-start gap-2"><span>3.</span> <span>Look out for future emails with custom fitness and nutrition advice tailored to your goals!</span></p>
+        </div>
+
+        <!-- Personalized Quiz Results -->
+        <div class="border-t border-white/40 pt-6">
+          <div class="text-center mb-5">
+            <span class="text-xs uppercase tracking-widest text-white/90 font-bold bg-black/10 px-3 py-1 rounded-full">Your Quiz Result</span>
+            <h2 id="result-title" class="text-2xl font-extrabold text-[#272626] mt-2"></h2>
+            <p id="result-subtitle" class="text-[#272626]/90 font-medium italic text-xs mt-1"></p>
+          </div>
+
+          <div class="space-y-4 bg-white/95 p-6 rounded-xl border border-white/50 text-sm text-[#272626] mb-6 shadow-sm">
+            <div>
+              <p class="font-bold text-[#8f7478] uppercase text-xs tracking-wider">You probably...</p>
+              <ul id="result-traits" class="list-disc list-inside space-y-1 mt-1.5 text-[#272626] font-medium"></ul>
+            </div>
+            
+            <div class="pt-3 border-t border-gray-200">
+              <p class="font-bold text-rose-700 uppercase text-xs tracking-wider">Your Biggest Obstacle:</p>
+              <p id="result-obstacle" class="font-bold text-[#272626] mt-0.5"></p>
+            </div>
+
+            <div class="pt-3 border-t border-gray-200">
+              <p class="font-bold text-[#8f7478] uppercase text-xs tracking-wider">What You Need:</p>
+              <ul id="result-needs" class="list-disc list-inside space-y-1 mt-1.5 text-[#272626] font-medium"></ul>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" onclick="location.reload()" class="block text-center text-xs text-[#272626] font-bold hover:underline mt-2">← Return to Main Page</a>
+      </div>
+    </div>
 
   </main>
 
-  <footer class="py-6 text-center text-xs text-[#272626]/60 border-t border-[#8f7478]/15 bg-[#fefdfd]">
-    &copy; 2026 Sarah Louise Fitness. All rights reserved.
+  <!-- Footer -->
+  <footer class="py-6 px-6 text-center text-xs text-[#272626]/60 border-t border-[#8f7478]/15 bg-[#fefdfd]">
+    © 2026 Sarah Louise Fitness. All rights reserved.
   </footer>
 
+  <!-- JavaScript Logic -->
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwquDcebN0xViAMcr1IstGOc2b_bfASKRZHcHy2o0ImyF-PsbiqDG8_-cXZRTmxzf4v/exec';
 
-    // Submit Feedback Function
-    async function submitFeedback(e) {
+    let currentQuestion = 0;
+    let userAnswers = [];
+    let leadDetails = {};
+
+    const questions = [
+      {
+        title: "Question 1: Which statement sounds most like you?",
+        options: [
+          "I never have enough time to work out.",
+          "I start strong but lose motivation after a few weeks.",
+          "I don’t know where to start.",
+          "If I miss one workout, I feel like I’ve failed.",
+          "I only work out when I “feel like it.”"
+        ]
+      },
+      {
+        title: "Question 2: What’s your biggest goal?",
+        options: [
+          "Lose body fat",
+          "Build strength",
+          "Feel more confident",
+          "Improve my health",
+          "Build consistency"
+        ]
+      },
+      {
+        title: "Question 3: What’s your biggest obstacle?",
+        options: [
+          "Time",
+          "Motivation",
+          "Knowing what to do",
+          "Nutrition",
+          "Staying consistent"
+        ]
+      },
+      {
+        title: "Question 4: How active are you right now?",
+        options: [
+          "I rarely exercise.",
+          "1–2 times per week.",
+          "3–4 times per week.",
+          "5+ times per week."
+        ]
+      },
+      {
+        title: "Question 5: How do you usually feel after missing a workout?",
+        options: [
+          "I give up completely.",
+          "I feel guilty.",
+          "I just continue later.",
+          "I don’t really have a routine."
+        ]
+      },
+      {
+        title: "Question 6: Which describes your eating habits?",
+        options: [
+          "I eat whatever is convenient.",
+          "I constantly start and stop diets.",
+          "I eat healthy during the week but not weekends.",
+          "I don’t know how much I should eat.",
+          "I try to eat balanced meals."
+        ]
+      },
+      {
+        title: "Question 7: If you had a coach, what would help you most?",
+        options: [
+          "Accountability",
+          "Workout plan",
+          "Nutrition guidance",
+          "Motivation",
+          "Confidence"
+        ]
+      }
+    ];
+
+    const personalityResults = {
+      busy: {
+        title: "💼 The Busy Professional",
+        subtitle: "You Want Results—But Life Gets in the Way.",
+        traits: ["Put everyone else first.", "Skip workouts because you’re busy.", "Feel guilty for not exercising."],
+        obstacle: "Time",
+        needs: ["Short workouts", "Efficient routines", "Flexible nutrition", "Accountability"]
+      },
+      seeker: {
+        title: "🔥 The Motivation Seeker",
+        subtitle: "You Always Start Strong… But motivation fades.",
+        traits: ["Start every Monday.", "Lose momentum after two weeks.", "Depend on motivation."],
+        obstacle: "Consistency",
+        needs: ["Habits", "Accountability", "Small wins", "Weekly goals"]
+      },
+      achiever: {
+        title: "⚖️ The All-or-Nothing Achiever",
+        subtitle: "If It Isn’t Perfect… You Quit.",
+        traits: ["Miss one workout.", "Feel guilty.", "Restart next Monday."],
+        obstacle: "Perfectionism",
+        needs: ["Flexibility", "Progress over perfection", "Sustainable routines"]
+      },
+      starter: {
+        title: "🌱 The Fresh Starter",
+        subtitle: "You’re Ready… You Just Need Direction.",
+        traits: ["Looking for a fresh routine.", "Need clear guidance."],
+        obstacle: "Knowing where to begin",
+        needs: ["Beginner workouts", "Confidence", "Education", "Simple nutrition"]
+      },
+      warrior: {
+        title: "💪 The Weekend Warrior",
+        subtitle: "You Exercise… Only When You Have Time.",
+        traits: ["Inconsistent routine.", "Exercise in bursts."],
+        obstacle: "Routine",
+        needs: ["Weekly schedule", "Better planning", "Accountability"]
+      }
+    };
+
+    // Step 1: Lead Capture Submit
+    async function handleLeadSubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('fb-btn');
-      btn.innerText = "SUBMITTING...";
+      const btn = document.getElementById('submitBtn');
+      btn.innerText = "STARTING QUIZ...";
       btn.disabled = true;
 
-      const payload = {
-        action: 'feedback',
-        name: document.getElementById('fb-name').value,
-        email: document.getElementById('fb-email').value,
-        rating: document.getElementById('fb-rating').value,
-        message: document.getElementById('fb-message').value
+      leadDetails = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value
       };
 
-      try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
-        });
+      // Transition to Quiz View
+      document.getElementById('lead-view').classList.add('hidden');
+      document.getElementById('quiz-view').classList.remove('hidden');
+      loadQuestion();
+    }
 
-        document.getElementById('fb-status').classList.remove('hidden');
-        btn.innerText = "SUBMITTED!";
-      } catch (err) {
-        console.error(err);
-        btn.disabled = false;
-        btn.innerText = "Submit Feedback";
+    // Step 2: Render Quiz Questions
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById('question-title').innerText = q.title;
+      
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      q.options.forEach((optionText, index) => {
+        const btn = document.createElement('button');
+        btn.className = "quiz-option w-full text-left p-4 rounded-xl border border-gray-200 bg-white text-[#272626] font-medium text-sm flex items-center space-x-3 shadow-xs cursor-pointer";
+        btn.innerHTML = `<span class="w-4 h-4 rounded-full border border-gray-400 flex-shrink-0"></span><span>${optionText}</span>`;
+        btn.onclick = () => selectOption(index);
+        optionsContainer.appendChild(btn);
+      });
+
+      const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
+      document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+    }
+
+    // Step 3: Handle Option Selection
+    function selectOption(optionIndex) {
+      userAnswers.push(optionIndex);
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showQuizResult();
       }
     }
 
-    // Submit GCash Payment Verification Function
-    async function submitGcashPayment(e) {
-      e.preventDefault();
-      const btn = document.getElementById('gc-btn');
-      btn.innerText = "VERIFYING...";
-      btn.disabled = true;
+    // Step 4: Display Result & Send Full Payload to Apps Script
+    async function showQuizResult() {
+      document.getElementById('quiz-view').classList.add('hidden');
+      document.getElementById('result-view').classList.remove('hidden');
 
-      const payload = {
-        action: 'gcash_payment',
-        name: document.getElementById('gc-name').value,
-        email: document.getElementById('gc-email').value,
-        refNumber: document.getElementById('gc-ref').value
+      let resultKey = 'busy';
+      const firstAnswer = userAnswers[0];
+      
+      if (firstAnswer === 0) resultKey = 'busy';
+      else if (firstAnswer === 1) resultKey = 'seeker';
+      else if (firstAnswer === 2) resultKey = 'starter';
+      else if (firstAnswer === 3) resultKey = 'achiever';
+      else resultKey = 'warrior';
+
+      const res = personalityResults[resultKey];
+
+      // Populate UI Result elements
+      document.getElementById('result-title').innerText = res.title;
+      document.getElementById('result-subtitle').innerText = res.subtitle;
+      document.getElementById('result-obstacle').innerText = res.obstacle;
+
+      document.getElementById('result-traits').innerHTML = res.traits.map(t => `<li>${t}</li>`).join('');
+      document.getElementById('result-needs').innerHTML = res.needs.map(n => `<li>${n}</li>`).join('');
+
+      // Send payload with Quiz Result back to Google Apps Script
+      const finalPayload = {
+        name: leadDetails.name,
+        email: leadDetails.email,
+        quizResult: res.title
       };
 
       try {
         await fetch(SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(finalPayload)
         });
-
-        document.getElementById('gc-status').classList.remove('hidden');
-        btn.innerText = "PAYMENT SUBMITTED!";
-      } catch (err) {
-        console.error(err);
-        btn.disabled = false;
-        btn.innerText = "CONFIRM PAYMENT & START →";
+      } catch (error) {
+        console.error("Error logging result:", error);
       }
     }
   </script>

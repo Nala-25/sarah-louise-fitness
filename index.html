@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sarah Louise Fitness - Custom 7-Day Plan & Quiz</title>
+  <title>Sarah Louise Fitness - Custom 7-Day Plan & Coaching</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -24,115 +24,408 @@
 <body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased selection:bg-[#d2858c] selection:text-white bg-[#caaeb1]">
 
   <!-- Header with Brand Logo -->
-  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] relative z-10">
+  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] sticky top-0 z-50 shadow-sm">
     <div class="flex flex-col items-center justify-center max-w-xl mx-auto">
       <img 
         src="https://lh3.googleusercontent.com/d/15VIHy6EnrPGrt61dwak1kspj_KOhkhwg" 
         alt="Sarah Louise Fitness Logo" 
-        class="h-20 md:h-28 w-auto object-contain mx-auto hover:opacity-95 transition"
+        class="h-16 md:h-20 w-auto object-contain mx-auto hover:opacity-95 transition"
       />
     </div>
   </header>
 
   <!-- MAIN CONTENT WRAPPER -->
-  <main class="bg-[#caaeb1] flex-1 flex flex-col justify-center py-8">
+  <main class="bg-[#caaeb1] flex-1">
 
-    <!-- STEP 1: LANDING PAGE LEAD FORM -->
-    <div id="lead-view" class="max-w-6xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
-        <!-- Left Column: Copy & Form -->
-        <div class="text-center lg:text-left">
+    <!-- STEP 1: FULL LANDING PAGE & LEAD FORM -->
+    <div id="lead-view" class="transition-all duration-500">
+      
+      <!-- HERO SECTION: MAIN COACHING OFFER -->
+      <section class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          <!-- Quiz Eyebrow Tag -->
-          <div class="inline-flex items-center gap-1.5 bg-[#d2858c]/20 text-[#272626] text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-5 border border-[#d2858c]/30 shadow-sm">
-            <span>⚡</span> 2-Minute Personalization Quiz
-          </div>
+          <!-- Left Column: Primary Pitch -->
+          <div class="text-center lg:text-left">
+            <span class="inline-flex items-center gap-1.5 bg-white/80 text-[#272626] text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-5 border border-[#8f7478]/30 shadow-sm">
+              ✨ Personalized Online Coaching
+            </span>
 
-          <!-- Main Heading -->
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 leading-tight text-[#272626]">
-            Transform Your Body With a <span class="text-[#8f7478] relative inline-block underline decoration-[#d2858c]/40 underline-offset-4">100% Tailored</span> Plan
-          </h1>
-          
-          <!-- Subheadline -->
-          <p class="text-[#272626]/80 text-base md:text-lg mb-6 leading-relaxed font-medium">
-            Take our quick 2-minute quiz to unlock your zero-equipment workout routine and meal prep guide built specifically for your body and goals.
-          </p>
-
-          <!-- Quiz Highlights Bullet List -->
-          <ul class="text-left space-y-3 mb-8 text-sm font-medium text-[#272626]/90 max-w-md mx-auto lg:mx-0 bg-white/60 p-4 rounded-xl border border-gray-200/60 shadow-sm">
-            <li class="flex items-center space-x-3">
-              <span class="text-base bg-white p-1 rounded-md shadow-xs">⏱️</span>
-              <span><strong>Fast:</strong> Takes only 2 minutes (7 simple questions)</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <span class="text-base bg-white p-1 rounded-md shadow-xs">🎯</span>
-              <span><strong>Targeted:</strong> Adapted to your fitness level & goals</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <span class="text-base bg-white p-1 rounded-md shadow-xs">🥗</span>
-              <span><strong>Complete:</strong> Custom workouts + quick meal prep ideas</span>
-            </li>
-          </ul>
-
-          <!-- Form Container -->
-          <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4 bg-[#d2858c] p-6 sm:p-8 rounded-2xl border border-[#8f7478]/30 shadow-2xl">
-            <div>
-              <input type="text" id="name" placeholder="First Name" required 
-                class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
-            </div>
-            <div>
-              <input type="email" id="email" placeholder="Email Address" required 
-                class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
-            </div>
-            <button type="submit" id="submitBtn" 
-              class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-4 rounded-xl transition duration-200 transform active:scale-[0.98] shadow-lg shadow-[#272626]/20 uppercase tracking-wide text-sm sm:text-base">
-              TAKE THE 2-MIN QUIZ & GET MY PLAN →
-            </button>
-          </form>
-          
-          <p class="text-xs text-[#272626]/70 mt-4 font-medium flex items-center justify-center lg:justify-start gap-1">
-            <span>🔒</span> 100% free. Takes 2 minutes. No credit card required.
-          </p>
-        </div>
-
-        <!-- Right Column: Hero Image Container with Floating Badges & Glow -->
-        <div class="flex justify-center items-center py-4 sm:py-6">
-          <!-- Outer Wrapper with padding so floating negative badges stay visible -->
-          <div class="relative w-full max-w-md lg:max-w-full m-2 sm:m-4">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 leading-tight text-[#272626]">
+              Become the Strongest, Healthiest & <span class="text-[#8f7478] relative inline-block underline decoration-[#d2858c]/40 underline-offset-4">Most Confident</span> Version of Yourself
+            </h1>
             
-            <!-- Floating Rating Badge (Top Left) -->
-            <div class="absolute -top-4 -left-2 sm:-left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-[#8f7478]/30 flex items-center gap-1.5 z-20 whitespace-nowrap">
-              <span class="text-xs">⭐⭐⭐⭐⭐</span>
-              <span class="text-[11px] font-bold text-[#272626]">4.9/5 (1,200+ Results)</span>
+            <p class="text-[#272626]/80 text-base md:text-lg mb-6 leading-relaxed font-medium">
+              Personalized online coaching for women who are ready to stop starting over and start seeing lasting results.
+            </p>
+
+            <ul class="text-left space-y-3 mb-8 text-sm sm:text-base font-semibold text-[#272626] max-w-md mx-auto lg:mx-0 bg-white/60 p-5 rounded-xl border border-gray-200/60 shadow-sm">
+              <li class="flex items-center gap-3">
+                <span class="text-emerald-700 text-lg">✔</span>
+                <span>No crash diets</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-emerald-700 text-lg">✔</span>
+                <span>No confusing workout plans</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-emerald-700 text-lg">✔</span>
+                <span>No unrealistic expectations</span>
+              </li>
+            </ul>
+
+            <p class="text-sm md:text-base text-[#272626]/90 mb-6 font-medium italic">
+              Just personalized coaching, expert guidance, and accountability that helps you build healthy habits for life.
+            </p>
+
+            <a href="#investment-section" class="inline-block w-full sm:w-auto text-center bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold px-8 py-4 rounded-xl transition duration-200 transform active:scale-[0.98] shadow-lg shadow-[#272626]/20 uppercase tracking-wide text-sm sm:text-base">
+              👉 Join the Coaching Program Today
+            </a>
+          </div>
+
+          <!-- Right Column: Hero Graphic -->
+          <div class="flex justify-center items-center">
+            <div class="relative w-full max-w-md lg:max-w-full">
+              <div class="absolute -top-4 -left-2 sm:-left-4 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-[#8f7478]/30 flex items-center gap-1.5 z-20">
+                <span class="text-xs">⭐⭐⭐⭐⭐</span>
+                <span class="text-[11px] font-bold text-[#272626]">4.9/5 (1,200+ Results)</span>
+              </div>
+
+              <div class="relative bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#d2858c]/20 via-transparent to-[#8f7478]/15 rounded-3xl pointer-events-none"></div>
+                <img 
+                  src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
+                  alt="Sarah Louise Fitness Program Preview" 
+                  class="relative w-full h-auto object-cover rounded-2xl z-0" 
+                />
+              </div>
+
+              <div class="absolute -bottom-4 -right-2 sm:-right-4 bg-[#272626] text-white px-4 py-2 rounded-2xl shadow-2xl flex items-center gap-2 text-xs font-bold z-20 border border-white/20">
+                <span>💪</span> <span>100% Tailored To You</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- LEAD MAGNET / QUIZ SECTION -->
+      <section id="quiz-lead-section" class="bg-[#fefdfd]/60 py-12 md:py-16 border-y border-[#8f7478]/20">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="bg-[#d2858c] p-6 sm:p-10 rounded-3xl border border-[#8f7478]/30 shadow-2xl text-[#272626]">
+            
+            <div class="text-center max-w-2xl mx-auto mb-8">
+              <span class="bg-[#272626] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm">
+                Not Ready for Coaching Yet?
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold mt-4 leading-tight">
+                Discover Your Fitness Personality & Get a FREE Personalized 7-Day Fitness Kickstart
+              </h2>
+              <p class="text-[#272626]/90 text-sm sm:text-base mt-2 font-medium">
+                Take our FREE 2-minute Fitness Personality Quiz and discover what's been holding you back. You'll instantly receive a personalized 7-day action plan including:
+              </p>
             </div>
 
-            <!-- Main Card Container -->
-            <div class="relative bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30 overflow-hidden">
-              <!-- Background Accent Glow inside the Card -->
-              <div class="absolute inset-0 bg-gradient-to-tr from-[#d2858c]/20 via-transparent to-[#8f7478]/15 rounded-3xl pointer-events-none"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <!-- What's included bullet list -->
+              <div class="bg-white/80 p-6 rounded-2xl border border-white/60 shadow-sm">
+                <p class="font-bold text-sm uppercase tracking-wider text-[#8f7478] mb-3">Your Free Plan Includes:</p>
+                <ul class="space-y-2.5 text-sm font-semibold text-[#272626]">
+                  <li class="flex items-center gap-2.5">
+                    <span class="text-emerald-700">✔</span> <span>Daily workouts</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="text-emerald-700">✔</span> <span>Simple nutrition habits</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="text-emerald-700">✔</span> <span>Water tracker</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="text-emerald-700">✔</span> <span>Habit & progress tracker</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="text-emerald-700">✔</span> <span>Personalized action plan</span>
+                  </li>
+                </ul>
+                <p class="text-xs text-[#272626]/80 mt-4 italic font-medium">
+                  No matter your fitness personality, you'll receive guidance designed for your lifestyle.
+                </p>
+              </div>
 
-              <!-- Main Model Image -->
-              <img 
-                src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
-                alt="Sarah Louise Fitness Program Preview" 
-                class="relative w-full h-auto object-cover rounded-2xl z-0" 
-              />
-            </div>
-
-            <!-- Floating Benefit Badge (Bottom Right) -->
-            <div class="absolute -bottom-4 -right-2 sm:-right-4 bg-[#272626] text-white px-4 py-2 rounded-2xl shadow-2xl flex items-center gap-2 text-xs font-bold z-20 border border-white/20 whitespace-nowrap">
-              <span>💪</span> <span>100% Home Workouts</span>
+              <!-- Quiz Opt-in Form -->
+              <div>
+                <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4">
+                  <h3 class="text-lg font-extrabold text-[#272626] mb-1">Enter Your Details</h3>
+                  <div>
+                    <input type="text" id="name" placeholder="First Name" required 
+                      class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
+                  </div>
+                  <div>
+                    <input type="email" id="email" placeholder="Email Address" required 
+                      class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
+                  </div>
+                  <button type="submit" id="submitBtn" 
+                    class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-4 rounded-xl transition duration-200 transform active:scale-[0.98] shadow-lg uppercase tracking-wide text-sm sm:text-base">
+                    👉 TAKE THE FREE 2-MIN QUIZ →
+                  </button>
+                  <p class="text-xs text-center text-[#272626]/80 font-medium">
+                    🔒 100% free. Takes 2 minutes. No credit card required.
+                  </p>
+                </form>
+              </div>
             </div>
 
           </div>
         </div>
+      </section>
 
-      </div>
+      <!-- SECTION: YOU'RE NOT FAILING -->
+      <section class="max-w-4xl mx-auto px-6 py-16 text-center">
+        <span class="text-xs font-bold uppercase tracking-widest bg-white/60 px-4 py-1.5 rounded-full border border-[#8f7478]/20">
+          The Reality
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#272626] mt-4 mb-6">
+          You're Not Failing—Your Plan Is.
+        </h2>
+        <div class="bg-white/70 p-8 rounded-3xl border border-white/80 shadow-md space-y-4 text-left sm:text-center">
+          <p class="text-lg font-bold text-[#8f7478] italic">
+            If you've ever asked yourself... "Why can't I stay consistent?"
+          </p>
+          <p class="text-base text-[#272626]/90 font-medium leading-relaxed">
+            You're not alone. <strong class="text-[#272626]">The problem isn't you.</strong> It's following a plan that wasn't designed for your lifestyle.
+          </p>
+          <p class="text-base text-[#272626] font-semibold leading-relaxed pt-2 border-t border-gray-200/80">
+            With personalized coaching and ongoing support, you'll finally build a routine you can stick with.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION: MEET SARAH LOUISE -->
+      <section class="bg-[#fefdfd] py-16 border-y border-[#8f7478]/15">
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-5 flex justify-center">
+            <img 
+              src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
+              alt="Sarah Louise" 
+              class="rounded-3xl shadow-xl border-4 border-white max-w-xs md:max-w-full object-cover"
+            />
+          </div>
+          <div class="md:col-span-7 space-y-4 text-center md:text-left">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#8f7478] bg-[#d2858c]/20 px-3.5 py-1 rounded-full">
+              Your Coach
+            </span>
+            <h2 class="text-3xl font-extrabold text-[#272626]">Meet Sarah Louise</h2>
+            <p class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#8f7478]">
+              Personal Trainer • Online Coach • Qualified Sports Nutrition Coach
+            </p>
+            <div class="space-y-3 text-sm sm:text-base text-[#272626]/85 font-medium leading-relaxed pt-2">
+              <p>Hi, I'm Sarah.</p>
+              <p>
+                I help women become stronger, healthier, and more confident through realistic fitness and nutrition coaching.
+              </p>
+              <p>
+                My goal isn't to change your life overnight. It's to help you build habits that last a lifetime—with support every step of the way.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: REVIEWS / TESTIMONIALS -->
+      <section class="max-w-5xl mx-auto px-6 py-16 text-center">
+        <h2 class="text-3xl font-extrabold text-[#272626] mb-2">Real Women. Real Results.</h2>
+        <p class="text-xs text-[#272626]/70 uppercase tracking-widest font-bold mb-8">(Transformation Stories)</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white/80 p-6 rounded-2xl border border-white/80 shadow-sm flex flex-col justify-between">
+            <div class="text-amber-500 mb-3 text-sm">⭐⭐⭐⭐⭐</div>
+            <p class="font-bold text-[#272626] text-base mb-4">"I finally stopped starting over."</p>
+            <p class="text-xs text-[#272626]/60 font-medium uppercase tracking-wider">— Verified Client</p>
+          </div>
+          <div class="bg-white/80 p-6 rounded-2xl border border-white/80 shadow-sm flex flex-col justify-between">
+            <div class="text-amber-500 mb-3 text-sm">⭐⭐⭐⭐⭐</div>
+            <p class="font-bold text-[#272626] text-base mb-4">"I've never felt stronger or more confident."</p>
+            <p class="text-xs text-[#272626]/60 font-medium uppercase tracking-wider">— Verified Client</p>
+          </div>
+          <div class="bg-white/80 p-6 rounded-2xl border border-white/80 shadow-sm flex flex-col justify-between">
+            <div class="text-amber-500 mb-3 text-sm">⭐⭐⭐⭐⭐</div>
+            <p class="font-bold text-[#272626] text-base mb-4">"The personalized coaching changed everything."</p>
+            <p class="text-xs text-[#272626]/60 font-medium uppercase tracking-wider">— Verified Client</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: THE METHOD -->
+      <section class="bg-[#d2858c] py-16 text-[#272626] border-y border-[#8f7478]/30">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+          <span class="bg-[#272626] text-white text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+            Our Proven Process
+          </span>
+          <h2 class="text-3xl font-extrabold mt-3 mb-10">The Strong & Confident Method</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white/90 p-6 rounded-2xl border border-white shadow-md text-left">
+              <span class="text-xs font-extrabold uppercase tracking-wider bg-[#d2858c]/30 text-[#8f7478] px-3 py-1 rounded-md">STEP 1</span>
+              <h3 class="text-xl font-extrabold text-[#272626] mt-3 mb-2">DISCOVER</h3>
+              <p class="text-sm font-medium text-[#272626]/80">We learn about your goals, lifestyle, and challenges.</p>
+            </div>
+            <div class="bg-white/90 p-6 rounded-2xl border border-white shadow-md text-left">
+              <span class="text-xs font-extrabold uppercase tracking-wider bg-[#d2858c]/30 text-[#8f7478] px-3 py-1 rounded-md">STEP 2</span>
+              <h3 class="text-xl font-extrabold text-[#272626] mt-3 mb-2">BUILD</h3>
+              <p class="text-sm font-medium text-[#272626]/80">Receive a customized workout and nutrition plan that fits your life.</p>
+            </div>
+            <div class="bg-white/90 p-6 rounded-2xl border border-white shadow-md text-left">
+              <span class="text-xs font-extrabold uppercase tracking-wider bg-[#d2858c]/30 text-[#8f7478] px-3 py-1 rounded-md">STEP 3</span>
+              <h3 class="text-xl font-extrabold text-[#272626] mt-3 mb-2">TRANSFORM</h3>
+              <p class="text-sm font-medium text-[#272626]/80">Stay accountable, build confidence, and achieve lasting results with ongoing coaching.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: EVERYTHING INCLUDED -->
+      <section class="max-w-4xl mx-auto px-6 py-16">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-extrabold text-[#272626]">Everything Included</h2>
+          <p class="text-sm text-[#272626]/80 font-medium mt-1">Complete support to ensure your success</p>
+        </div>
+
+        <div class="bg-white/80 p-8 rounded-3xl border border-white/80 shadow-md">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base font-bold text-[#272626]">
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Personalized Training Program</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Customized Nutrition Coaching</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Weekly Accountability Check-Ins</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Direct Access to Sarah</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Progress Tracking & Plan Adjustments</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Habit Coaching</span>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-white/60 rounded-xl md:col-span-2">
+              <span class="text-emerald-700 text-xl">✔</span> <span>Ongoing Support & Motivation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: VALUE / COFFEE COMPARISON -->
+      <section class="bg-[#fefdfd] py-16 border-y border-[#8f7478]/15">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="text-3xl font-extrabold text-[#272626] mb-3">Invest in Yourself</h2>
+          <p class="text-base text-[#272626]/80 font-medium max-w-2xl mx-auto mb-8">
+            Every month you wait is another month of feeling stuck. Instead of guessing what works, invest in expert coaching that helps you create lasting change.
+          </p>
+
+          <div class="bg-[#caaeb1]/40 p-8 rounded-3xl border border-[#8f7478]/20 max-w-2xl mx-auto">
+            <span class="bg-[#8f7478] text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1 rounded-full">Unbeatable Value</span>
+            <h3 class="text-2xl font-extrabold text-[#272626] mt-3 mb-2">Less Than Your Weekly Coffee Habit</h3>
+            <p class="text-sm font-semibold text-[#8f7478] mb-6">
+              For around AUD $35 per week (less than AUD $5 a day) you'll receive:
+            </p>
+
+            <ul class="text-left space-y-2.5 text-sm font-semibold text-[#272626] max-w-md mx-auto">
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Personalized coaching</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Tailored nutrition guidance</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Weekly accountability</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Direct support</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Program adjustments</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Expert advice</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-700">✔</span> Lifelong healthy habits</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: WHY SARAH CREATED THIS -->
+      <section class="max-w-3xl mx-auto px-6 py-16 text-center">
+        <div class="bg-white/80 p-8 sm:p-10 rounded-3xl border border-white shadow-sm relative">
+          <span class="text-4xl text-[#d2858c] font-serif leading-none block mb-2">“</span>
+          <p class="text-base sm:text-lg font-medium italic text-[#272626] leading-relaxed mb-4">
+            "I believe every woman deserves expert coaching without paying hundreds of dollars every month. This isn't about selling another workout plan. It's about giving you the support, accountability, and guidance to become stronger, healthier, and more confident."
+          </p>
+          <p class="font-extrabold text-sm text-[#8f7478] uppercase tracking-wider">— Sarah Louise</p>
+        </div>
+      </section>
+
+      <!-- SECTION: INVESTMENT & OFFER CALL-TO-ACTION -->
+      <section id="investment-section" class="bg-[#272626] text-white py-16">
+        <div class="max-w-xl mx-auto px-6 text-center">
+          <span class="bg-[#d2858c] text-[#272626] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+            Limited Coaching Spots
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 mb-2">Your Investment</h2>
+          <div class="text-4xl sm:text-5xl font-black text-[#d2858c] my-4">
+            Only AUD $149<span class="text-lg font-normal text-white/80">/month</span>
+          </div>
+
+          <div class="bg-white/10 p-6 rounded-2xl border border-white/10 space-y-2 text-sm text-white/90 font-medium mb-8 text-left sm:text-center">
+            <p class="flex items-center justify-center gap-2"><span class="text-emerald-400">✔</span> Around AUD $35/week</p>
+            <p class="flex items-center justify-center gap-2"><span class="text-emerald-400">✔</span> Less than AUD $5/day</p>
+            <p class="flex items-center justify-center gap-2"><span class="text-emerald-400">✔</span> No hidden fees</p>
+            <p class="flex items-center justify-center gap-2"><span class="text-emerald-400">✔</span> No long-term contracts</p>
+          </div>
+
+          <a href="#quiz-lead-section" class="block w-full bg-[#d2858c] hover:bg-[#c2757c] text-[#272626] font-bold py-4 rounded-xl transition duration-200 transform active:scale-[0.98] uppercase tracking-wide text-sm sm:text-base shadow-lg">
+            👉 Join Sarah Louise Fitness Today
+          </a>
+          <p class="text-xs text-white/60 mt-3">To provide every client with personalized support, only a limited number of coaching spots are available.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: FAQ -->
+      <section class="max-w-3xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-extrabold text-center text-[#272626] mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="bg-white/80 p-5 rounded-2xl border border-white/80">
+            <h3 class="font-bold text-base text-[#272626]">Do I need gym experience?</h3>
+            <p class="text-sm font-medium text-[#272626]/80 mt-1">No. Your program is tailored to your fitness level.</p>
+          </div>
+          <div class="bg-white/80 p-5 rounded-2xl border border-white/80">
+            <h3 class="font-bold text-base text-[#272626]">Will my program be personalized?</h3>
+            <p class="text-sm font-medium text-[#272626]/80 mt-1">Yes. Every workout and nutrition plan is built around your goals.</p>
+          </div>
+          <div class="bg-white/80 p-5 rounded-2xl border border-white/80">
+            <h3 class="font-bold text-base text-[#272626]">What if I'm busy?</h3>
+            <p class="text-sm font-medium text-[#272626]/80 mt-1">We'll create a realistic plan that fits your schedule.</p>
+          </div>
+          <div class="bg-white/80 p-5 rounded-2xl border border-white/80">
+            <h3 class="font-bold text-base text-[#272626]">Do I need to follow a strict diet?</h3>
+            <p class="text-sm font-medium text-[#272626]/80 mt-1">No. You'll learn flexible, sustainable nutrition habits.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CLOSING CTA -->
+      <section class="bg-[#d2858c] py-16 text-[#272626] text-center border-t border-[#8f7478]/30">
+        <div class="max-w-3xl mx-auto px-6">
+          <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Your Future Self Starts Today</h2>
+          <p class="text-base sm:text-lg font-medium mb-6 leading-relaxed">
+            One year from now... You can wish you had started. Or you can look back and be proud that you did.<br>
+            <strong>The strongest, healthiest, most confident version of you begins with one decision.</strong>
+          </p>
+
+          <div class="bg-white/90 p-8 rounded-3xl border border-white shadow-xl max-w-lg mx-auto space-y-4">
+            <h3 class="text-xl font-extrabold text-[#272626]">Ready to Start?</h3>
+            <p class="text-sm font-bold text-[#8f7478]">Join Sarah Louise Fitness Today — Only AUD $149/month</p>
+            <a href="#investment-section" class="block w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-4 rounded-xl transition duration-200 uppercase tracking-wide text-sm sm:text-base shadow-lg">
+              👉 Start Your Coaching Journey Today
+            </a>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <!-- STEP 2: QUIZ VIEW (Hidden initially) -->
-    <div id="quiz-view" class="hidden max-w-xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
+    <div id="quiz-view" class="hidden max-w-xl mx-auto px-6 py-12 my-auto w-full transition-all duration-500">
       <!-- Confirmation Banner -->
       <div class="bg-[#272626] border border-[#272626] p-4 rounded-xl mb-6 text-center text-sm text-[#fefdfd] shadow-lg flex items-center justify-center gap-2">
         <span>🎉</span> <strong>Success! Your 7-Day Guide is on its way to your inbox.</strong>
@@ -159,18 +452,15 @@
     </div>
 
     <!-- STEP 3: THANK YOU & QUIZ RESULT PAGE (Hidden initially) -->
-    <div id="result-view" class="hidden max-w-xl mx-auto px-6 py-8 text-center my-auto w-full transition-all duration-500">
-      <!-- Result Container -->
+    <div id="result-view" class="hidden max-w-xl mx-auto px-6 py-12 text-center my-auto w-full transition-all duration-500">
       <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl text-left">
         
-        <!-- Thank You Confirmation Header -->
         <div class="text-center mb-6">
           <span class="bg-[#272626] text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm">Signup Confirmed</span>
           <h1 class="text-2xl sm:text-3xl font-extrabold text-[#272626] mt-3">🎉 Thank You for Joining!</h1>
           <p class="text-white font-bold text-sm mt-1">Your signup was successful!</p>
         </div>
 
-        <!-- What to Expect Next Section -->
         <div class="bg-white/95 p-5 rounded-xl border border-white/50 text-xs text-[#272626] space-y-2 mb-6 shadow-sm">
           <p class="font-bold text-[#272626] text-sm mb-2">What To Expect Next:</p>
           <p class="flex items-start gap-2"><span>1.</span> <span><strong>Check your email inbox</strong> for an email from <em>Sarah Louise Fitness</em> containing your <strong>Customized 7-Day Guide</strong>.</span></p>
@@ -178,7 +468,6 @@
           <p class="flex items-start gap-2"><span>3.</span> <span>Look out for future emails with custom fitness and nutrition advice tailored to your goals!</span></p>
         </div>
 
-        <!-- Personalized Quiz Results -->
         <div class="border-t border-white/40 pt-6">
           <div class="text-center mb-5">
             <span class="text-xs uppercase tracking-widest text-white/90 font-bold bg-black/10 px-3 py-1 rounded-full">Your Quiz Result</span>
@@ -344,9 +633,10 @@
         email: document.getElementById('email').value
       };
 
-      // Transition to Quiz View
+      // Transition to Quiz View & scroll smoothly to top of quiz container
       document.getElementById('lead-view').classList.add('hidden');
       document.getElementById('quiz-view').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       loadQuestion();
     }
 
@@ -386,6 +676,7 @@
     async function showQuizResult() {
       document.getElementById('quiz-view').classList.add('hidden');
       document.getElementById('result-view').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       let resultKey = 'busy';
       const firstAnswer = userAnswers[0];
